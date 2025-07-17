@@ -1,15 +1,45 @@
 import Layout from "@/components/Layout";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { signIn, useSession } from "next-auth/react";
 
 export default function LoginPage() {
+	const { data: session } = useSession();
+
+	const router = useRouter();
+	const { redirect } = router;
+
+	useEffect(() => {
+		//if user is logged in
+		if (session?.user) {
+			router.push(redirect || "/");
+		}
+	}, [router, session, redirect]);
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
 
-	function submitHandler({ email, password }) {}
+	async function submitHandler({ email, password }) {
+		//it is connect to the nextauth file
+		try {
+			const result = await signIn("credentials", {
+				redirect: false,
+				email,
+				password,
+			});
+
+			console.log(result);
+
+			if (result.error) console.log(result.error);
+		} catch (err) {
+			console.log(err);
+		}
+	}
 	return (
 		<Layout title="Login">
 			{/* This sets the maximum width of the element to the medium breakpoint width of the screen. In Tailwind’s default config, screen-md corresponds roughly to 768px. So the element will never get wider than that, even if the screen is wider. */}

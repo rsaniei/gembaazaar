@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import { useContext, useState, useEffect } from "react";
 import { CartContext } from "../context/Cart";
 
@@ -7,6 +8,7 @@ export default function Layout({ children, title }) {
 	const { state, dispatch } = useContext(CartContext);
 	const { cart } = state;
 	const [cartItemsCount, setCartItemsCount] = useState(0);
+	const { status, data: session } = useSession();
 
 	useEffect(() => {
 		setCartItemsCount(cart.cartItems.reduce((acc, cur) => acc + cur.qty, 0));
@@ -33,9 +35,15 @@ export default function Layout({ children, title }) {
 									</span>
 								)}
 							</Link>
-							<Link href="/login" className="p-2">
-								Login
-							</Link>
+							{status === "loading" ? (
+								"Loading"
+							) : session?.user ? (
+								session.user.name
+							) : (
+								<Link href="/login" className="p-2">
+									Login
+								</Link>
+							)}
 						</div>
 					</nav>
 				</header>
