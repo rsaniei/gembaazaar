@@ -1,8 +1,11 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { useContext, useState, useEffect } from "react";
 import { CartContext } from "../context/Cart";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import Cookies from "js-cookie";
+import DropDown from "./DropDown";
 
 export default function Layout({ children, title }) {
 	const { state, dispatch } = useContext(CartContext);
@@ -14,6 +17,11 @@ export default function Layout({ children, title }) {
 		setCartItemsCount(cart.cartItems.reduce((acc, cur) => acc + cur.qty, 0));
 	}, [cart.cartItems]);
 
+	function logoutHandler() {
+		Cookies.remove();
+		//go to login page after signout
+		signOut({ callbackUrl: "/login" });
+	}
 	return (
 		<>
 			<Head>
@@ -38,7 +46,33 @@ export default function Layout({ children, title }) {
 							{status === "loading" ? (
 								"Loading"
 							) : session?.user ? (
-								session.user.name
+								<Menu as="div" className={"relative inline-block"}>
+									<MenuButton className={"text-blue-500"}>
+										{session.user.name}
+									</MenuButton>
+									<MenuItems
+										className={
+											"absolute right-0 w-56 bg-white p-4 origin-top-right border-slate-500"
+										}
+									>
+										<MenuItem>
+											<DropDown className={"flex p-2"} href={"/profile"}>
+												{" "}
+												Profile{" "}
+											</DropDown>
+										</MenuItem>
+										<MenuItem>
+											<a
+												className={"flex p-2"}
+												href={"#"}
+												onClick={logoutHandler}
+											>
+												{" "}
+												Logout{" "}
+											</a>
+										</MenuItem>
+									</MenuItems>
+								</Menu>
 							) : (
 								<Link href="/login" className="p-2">
 									Login

@@ -33,9 +33,7 @@ export default function LoginPage() {
 				password,
 			});
 
-			console.log(result);
-
-			if (result.error) console.log(result.error);
+			if (result.error) console.log("Failed");
 		} catch (err) {
 			console.log(err);
 		}
