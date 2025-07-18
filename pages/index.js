@@ -16,7 +16,7 @@ export default function Home({ products }) {
 		const qty = existingItem ? existingItem.qty + 1 : 1;
 
 		if (qty > product.count) {
-			toast.error("Product sold out!");
+			toast.error("Product sold out!:(");
 			return;
 		}
 		dispatch({ type: "ADD_ITEM", payload: { ...product, qty } });
