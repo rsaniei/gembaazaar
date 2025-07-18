@@ -14,17 +14,18 @@ export default function ProductPage({ product }) {
 
 	function addToCartHandler() {
 		const existingItem = state.cart.cartItems.find(
-			(item) => item.slug === pitem.slug
+			(item) => item.slug === product.slug
 		);
 
 		const qty = existingItem ? existingItem.qty + 1 : 1;
-		if (qty > pitem.count) {
+		if (qty > product.count) {
 			alert("Product is out!");
 			return;
 		}
-		dispatch({ type: "ADD_ITEM", payload: { ...pitem, qty } });
+		dispatch({ type: "ADD_ITEM", payload: { ...product, qty } });
 		router.push("/cart");
 	}
+
 	return (
 		<Layout title={product.title}>
 			<div className="grid  md:grid-cols-4 md:gap-3 rounded-xl bg-white p-10">
