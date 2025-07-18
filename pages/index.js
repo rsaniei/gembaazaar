@@ -1,8 +1,9 @@
+import { toast } from "react-toastify";
+import { useContext } from "react";
 import Layout from "@/components/Layout";
 import ProductItem from "@/components/ProductItem";
 import db from "../utils/db";
 import Product from "@/models/product";
-import { useContext } from "react";
 import { CartContext } from "../context/Cart";
 
 export default function Home({ products }) {
@@ -15,10 +16,11 @@ export default function Home({ products }) {
 		const qty = existingItem ? existingItem.qty + 1 : 1;
 
 		if (qty > product.count) {
-			alert("Product is Out!");
+			toast.error("Product sold out!");
 			return;
 		}
 		dispatch({ type: "ADD_ITEM", payload: { ...product, qty } });
+		toast.success("Product added!");
 	}
 	return (
 		<Layout title="HomePage">
