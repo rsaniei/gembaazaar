@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-export default function Product({ item }) {
+export default function ProductItem({ item }) {
 	return (
 		<div className=" bg-white rounded-xl mb-5 block py-5">
 			<Link href={`/product/${item.slug}`}>

@@ -9,5 +9,10 @@ async function connect() {
 	console.log("Connected to DB");
 }
 
-const db = { connect };
+//convert mongodb docs to JSON objects
+function convertToObject(doc) {
+	doc._id = doc._id.toString();
+	return doc;
+}
+const db = { connect, convertToObject };
 export default db;
