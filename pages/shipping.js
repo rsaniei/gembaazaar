@@ -1,9 +1,26 @@
-import { useState } from "react";
+import Cookies from "js-cookie";
+import { useForm } from "react-hook-form";
+
+import { useState, useContext } from "react";
+import { useRouter } from "next/router";
+import { CartContext } from "@/context/Cart";
 import Layout from "@/components/Layout";
 import CheckoutWizard from "@/components/CheckoutWizard";
 
 export default function Shipping() {
 	const [selectedOption, setSelectedOption] = useState(null);
+	const { state, dispatch } = useContext(CartContext);
+	const router = useRouter();
+
+	const { cart } = state;
+	// const { shippingData } = state;
+
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
+
 	const shippingOptions = [
 		{
 			option: "In-store delivery",
@@ -20,18 +37,59 @@ export default function Shipping() {
 		{ option: "Home delivery", price: "3.95 €", description: "" },
 	];
 
-	function handleSubmit() {}
+	function submitHandler({
+		deliveryOption,
+		firstname,
+		lastname,
+		address,
+		addressExtra,
+		postalCode,
+		city,
+	}) {
+		console.log(deliveryOption);
+		console.log(firstname, lastname, address, addressExtra, postalCode, city);
+
+		dispatch({
+			type: "SAVE_SHIPPING_DATA",
+			payload: {
+				deliveryOption,
+				firstname,
+				lastname,
+				address,
+				addressExtra,
+				postalCode,
+				city,
+			},
+		});
+		Cookies.set(
+			"cart",
+			JSON.stringify({
+				...cart,
+				shippingData: {
+					deliveryOption,
+					firstname,
+					lastname,
+					address,
+					addressExtra,
+					postalCode,
+					city,
+				},
+			})
+		);
+		router.push("/payment");
+	}
 	return (
 		<Layout title="Shipping">
 			{/* active step is 1 (because step=0 is user login). here the user is already logged in */}
 			<CheckoutWizard activeStep={1} />
-			<form className="my-10" onSubmit={handleSubmit}>
+			<form className="my-10" onSubmit={handleSubmit(submitHandler)}>
 				{shippingOptions.map((item, index) => (
 					<>
 						<label className="flex items-start gap-4 cursor-pointer">
 							<input
+								{...register("deliveryOption", { required: true })}
 								type="radio"
-								name="address"
+								id="deliveryOption"
 								value={item.option}
 								className="mr-4 mt-2 scale-125"
 								onChange={(e) => {
@@ -57,18 +115,27 @@ export default function Shipping() {
 						<h2 className="mb-4">Personal data</h2>
 						<div className="flex flex-wrap mb-10 gap-4">
 							<input
+								{...register("firstname", {
+									required: true,
+								})}
 								type="text"
 								id="firstname"
 								placeholder="First name*"
 								className="p-2 border-b-1  border-[#cccccc] w-100 focus:outline-none"
 							/>
 							<input
+								{...register("lastname", {
+									required: true,
+								})}
 								type="text"
 								id="lastname"
 								placeholder="Last name*"
 								className="p-2 border-b-1  border-[#cccccc] w-100 focus:outline-none"
 							/>
 							<input
+								{...register("phone", {
+									required: false,
+								})}
 								type="phone"
 								id="phone"
 								placeholder="Phone number"
@@ -79,24 +146,37 @@ export default function Shipping() {
 						<h2 className="mb-4">Delivery address</h2>
 						<div className="mb-4 flex flex-wrap gap-4">
 							<input
+								{...register("address", {
+									required: true,
+								})}
 								type="text"
 								id="address"
 								placeholder="Address*"
 								className="p-2 border-b-1  border-[#cccccc] w-100 focus:outline-none"
 							/>
 							<input
+								{...register("addressExtra", {
+									required: false,
+								})}
 								type="text"
-								id="address-extra"
+								id="addressExtra"
 								placeholder="Other address information"
 								className="p-2 border-b-1  border-[#cccccc] w-100 focus:outline-none"
 							/>
 							<input
+								{...register("postalCode", {
+									required: true,
+								})}
 								type="text"
-								id="postalcode"
+								id="postalCode"
 								placeholder="Postal code*"
 								className="p-2 border-b-1  border-[#cccccc] w-100 focus:outline-none"
 							/>
 							<input
+								{...register("city", {
+									required: true,
+								})}
+								postalCode
 								type="text"
 								id="city"
 								placeholder="City"
@@ -105,9 +185,9 @@ export default function Shipping() {
 						</div>
 					</div>
 				)}
-				<butt className="bg-gray-100 border border-black-500 px-8 py-2 cursor-pointer">
+				<button className="bg-gray-100 border border-black-500 px-8 py-2 cursor-pointer">
 					Next
-				</butt>
+				</button>
 			</form>
 		</Layout>
 	);
