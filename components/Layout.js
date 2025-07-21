@@ -29,7 +29,7 @@ export default function Layout({ children, title }) {
 			<Head>
 				<title>{`${title} - Shopping`}</title>
 			</Head>
-			<ToastContainer position="bottom-center" limit={1} />
+			<ToastContainer position="bottom-center" limit={1} autoClose={2000} />
 			<div className="flex min-h-screen flex-col justify-between">
 				<header>
 					<nav className="flex h-14 px-8 justify-between items-center border-b-4 bg-white">
@@ -84,7 +84,7 @@ export default function Layout({ children, title }) {
 						</div>
 					</nav>
 				</header>
-				<main className="container m-auto mt-4 px-4">{children}</main>
+				<main className="container m-auto mt-4 px-12">{children}</main>
 				<footer className="flex justify-center items-center h-10">
 					Footer
 				</footer>

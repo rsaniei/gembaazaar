@@ -13,7 +13,7 @@ function CartPage() {
 	} = state;
 
 	function checkoutHandler() {
-		router.push("login?redirect=/checkout"); //check later
+		router.push("login?redirect=/shipping"); //check later
 	}
 	return (
 		<Layout title="Shopping Cart">

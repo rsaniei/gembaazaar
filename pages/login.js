@@ -9,11 +9,17 @@ export default function LoginPage() {
 	const { data: session } = useSession();
 
 	const router = useRouter();
-	const { redirect } = router;
+	console.log(router);
+
+	const { redirect } = router.query;
 
 	useEffect(() => {
 		//if user is logged in
 		if (session?.user) {
+			console.log("redirect");
+
+			console.log(redirect);
+
 			router.push(redirect || "/");
 		}
 	}, [router, session, redirect]);
