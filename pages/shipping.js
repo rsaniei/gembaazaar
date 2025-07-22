@@ -1,25 +1,42 @@
 import Cookies from "js-cookie";
 import { useForm } from "react-hook-form";
 
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 import { CartContext } from "@/context/Cart";
 import Layout from "@/components/Layout";
 import CheckoutWizard from "@/components/CheckoutWizard";
 
 export default function Shipping() {
-	const [selectedOption, setSelectedOption] = useState(null);
 	const { state, dispatch } = useContext(CartContext);
 	const router = useRouter();
 
 	const { cart } = state;
-	// const { shippingData } = state;
+	const { shippingData } = state;
 
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm();
+	const { register, setValue, watch, handleSubmit } = useForm();
+	const deliveryOption = watch("deliveryOption");
+
+	useEffect(() => {
+		setValue("deliveryOption", shippingData?.deliveryOption || "");
+		if (shippingData?.deliveryOption === "Home delivery") {
+			setValue("firstname", shippingData.firstname);
+			setValue("lastname", shippingData.lastname);
+			setValue("address", shippingData.address);
+			setValue("addressExtra", shippingData.addressExtra);
+			setValue("postalCode", shippingData.postalCode);
+			setValue("city", shippingData.city);
+		}
+	}, [
+		setValue,
+		shippingData?.deliveryOption,
+		shippingData?.firstname,
+		shippingData?.lastname,
+		shippingData?.address,
+		shippingData?.addressExtra,
+		shippingData?.postalCode,
+		shippingData?.city,
+	]);
 
 	const shippingOptions = [
 		{
@@ -84,7 +101,7 @@ export default function Shipping() {
 			<CheckoutWizard activeStep={1} />
 			<form className="my-10" onSubmit={handleSubmit(submitHandler)}>
 				{shippingOptions.map((item, index) => (
-					<>
+					<div key={index}>
 						<label className="flex items-start gap-4 cursor-pointer">
 							<input
 								{...register("deliveryOption", { required: true })}
@@ -92,9 +109,6 @@ export default function Shipping() {
 								id="deliveryOption"
 								value={item.option}
 								className="mr-4 mt-2 scale-125"
-								onChange={(e) => {
-									setSelectedOption(e.target.value);
-								}}
 							/>
 							<div>
 								<div>{item.option}</div>
@@ -107,10 +121,10 @@ export default function Shipping() {
 							</div>
 						</label>
 						<br />
-					</>
+					</div>
 				))}
 
-				{selectedOption === "Home delivery" && (
+				{deliveryOption === "Home delivery" && (
 					<div className="mb-10">
 						<h2 className="mb-4">Personal data</h2>
 						<div className="flex flex-wrap mb-10 gap-4">
@@ -176,7 +190,6 @@ export default function Shipping() {
 								{...register("city", {
 									required: true,
 								})}
-								postalCode
 								type="text"
 								id="city"
 								placeholder="City"
