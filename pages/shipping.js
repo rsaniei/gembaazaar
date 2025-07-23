@@ -205,3 +205,4 @@ export default function Shipping() {
 		</Layout>
 	);
 }
+Shipping.auth = true;
