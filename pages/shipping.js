@@ -12,12 +12,14 @@ export default function Shipping() {
 	const router = useRouter();
 
 	const { cart } = state;
-	const { shippingData } = state;
+	const { shippingData } = cart;
 
 	const { register, setValue, watch, handleSubmit } = useForm();
 	const deliveryOption = watch("deliveryOption");
 
 	useEffect(() => {
+		console.log("in the use effect");
+
 		setValue("deliveryOption", shippingData?.deliveryOption || "");
 		if (shippingData?.deliveryOption === "Home delivery") {
 			setValue("firstname", shippingData.firstname);
