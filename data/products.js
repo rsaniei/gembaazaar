@@ -16,7 +16,7 @@ const products = [
 			"High-fidelity wireless headphones with noise-cancelling technology.",
 		category: "Electronics",
 		count: 20,
-		image: "/images/NoiseCancellingHeadphones.jpg",
+		image: "/images/ClassicLeatherWallet.jpg",
 	},
 	{
 		title: "Stainless Steel Water Bottle",
@@ -26,7 +26,7 @@ const products = [
 			"Keep your drinks hot or cold for hours with this eco-friendly bottle.",
 		category: "Home & Kitchen",
 		count: 75,
-		image: "/images/StainlessSteelWaterBottle.jpg",
+		image: "/images/ClassicLeatherWallet.jpg",
 	},
 	{
 		title: "Yoga Mat Pro",

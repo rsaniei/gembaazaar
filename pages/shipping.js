@@ -64,6 +64,7 @@ export default function Shipping() {
 		addressExtra,
 		postalCode,
 		city,
+		phone,
 	}) {
 		console.log(deliveryOption);
 		console.log(firstname, lastname, address, addressExtra, postalCode, city);
@@ -78,6 +79,7 @@ export default function Shipping() {
 				addressExtra,
 				postalCode,
 				city,
+				phone,
 			},
 		});
 		Cookies.set(
@@ -92,6 +94,7 @@ export default function Shipping() {
 					addressExtra,
 					postalCode,
 					city,
+					phone,
 				},
 			})
 		);
