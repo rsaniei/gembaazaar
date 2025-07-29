@@ -11,39 +11,110 @@ export default function PlaceOrder() {
 	const { shippingData, paymentMethod, cartItems } = cart;
 	console.log(shippingData);
 
+	function getTomorrowFormatted() {
+		const days = [
+			"Sunday",
+			"Monday",
+			"Tuesday",
+			"Wednesday",
+			"Thursday",
+			"Friday",
+			"Saturday",
+		];
+		const months = [
+			"January",
+			"February",
+			"March",
+			"April",
+			"May",
+			"June",
+			"July",
+			"August",
+			"September",
+			"October",
+			"November",
+			"December",
+		];
+
+		const today = new Date();
+		const tomorrow = new Date(today);
+		tomorrow.setDate(today.getDate() + 1);
+
+		const dayName = days[tomorrow.getDay()];
+		const monthName = months[tomorrow.getMonth()];
+		const dayOfMonth = tomorrow.getDate();
+
+		return `${dayName}, ${monthName} ${dayOfMonth}`;
+	}
+
 	return (
 		<Layout title="Place order">
 			<CheckoutWizard activeStep={3} />
 			<h1 className="mb-4 text-xl">Place order</h1>
-			<div className="grid grid-cols-2 md:grid-cols-2 md:gap-5">
-				<div className="p-5 col-span-2 md:col-span-1">
-					<h2 className="mb-2 text-lg">Shipping methods</h2>
-					<div className="flex flex-wrap gap-15">
-						<div className="">{shippingData.deliveryOption}</div>
+			<div className="grid grid-cols-2 md:grid-cols-2 md:gap-10">
+				<div className="p-5 col-span-2 md:col-span-1 border-b border-gray-300">
+					<h2 className="font-semibold mb-10 text-lg">Shipping methods</h2>
+					<div className="flex flex-wrap gap-10">
+						<div className="mr-12">
+							<div className="text-lg">{shippingData.deliveryOption}</div>
+							<div className="text-sm">
+								Tomorrow - {getTomorrowFormatted()}{" "}
+							</div>
+							<div className="text-sm"> €3.95 </div>
+							<div className="text-sm mt-5">
+								<Link
+									className="text-sm text-gray-400 border-b border-gray-300"
+									href="/shipping"
+								>
+									change shipping type{" "}
+								</Link>
+							</div>
+						</div>
 						<div>
-							<div>
-								{shippingData.firstname} {shippingData.lastname}
-								<div className="">{shippingData.address}</div>
-								<div className="">{shippingData.addressExtra}</div>
-								<div className="">
+							<div className="">
+								<div className="text-lg">
+									{shippingData.firstname} {shippingData.lastname}
+								</div>
+								<div className="text-sm">{shippingData.address}</div>
+								<div className="text-sm">{shippingData.addressExtra}</div>
+								<div className="text-sm">
 									{shippingData.postalCode} {shippingData.city}
 								</div>
-								<div className="">{shippingData.city}</div>
-								<div className="">SPAIN</div>
-								<div className="">{shippingData.phone}</div>
+								<div className="text-sm">{shippingData.city}</div>
+								<div className="text-sm">SPAIN</div>
+								<div className="text-sm">{shippingData.phone}</div>
+								<div className="mt-5">
+									<Link
+										className="text-sm text-gray-400 border-b border-gray-300"
+										href="/shipping"
+									>
+										change shipping address
+									</Link>
+								</div>
 							</div>
 						</div>
 					</div>
-
-					<div>
-						<Link href="/shipping">Edit</Link>
-					</div>
 				</div>
 				<div className="p-5 col-span-2 md:col-span-1">
-					<h2 className="mb-2 text-lg">Summary</h2>
+					<div className="mb-10">
+						<div className="flex justify-between">
+							<div>
+								<h2 className="font-semibold text-lg">Summary</h2>
+								<div className="text-xs">
+									{cartItems.length}{" "}
+									{cartItems.length === 1 ? "article" : "articles"}
+								</div>
+							</div>
+							<div className="text-sm text-gray-400">
+								<Link className="border-b border-gray-300" href="/">
+									See more
+								</Link>
+							</div>
+						</div>
+					</div>
 					<div>
 						{cartItems.map((item) => (
-							<div key={item._id} className="flex flex-wrap gap-3">
+							<div key={item._id} className="flex flex-wrap flex-col gap-3">
 								<div className="">
 									<Image
 										alt={item.title}
@@ -59,10 +130,15 @@ export default function PlaceOrder() {
 					</div>
 				</div>
 				<div className="p-5 col-span-2 md:col-span-1">
-					<h2 className="mb-2 text-lg">Payment Method</h2>
+					<h2 className="mb-2 text-lg">Payment methods</h2>
 					<div>{paymentMethod}</div>
-					<div>
-						<Link href="/payment">Edit</Link>
+					<div className="mt-5">
+						<Link
+							className="text-sm text-gray-400 border-b border-gray-300"
+							href="/payment"
+						>
+							Change payment method
+						</Link>
 					</div>
 				</div>
 			</div>
