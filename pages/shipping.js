@@ -18,8 +18,6 @@ export default function Shipping() {
 	const deliveryOption = watch("deliveryOption");
 
 	useEffect(() => {
-		console.log("in the use effect");
-
 		setValue("deliveryOption", shippingData?.deliveryOption || "");
 		if (shippingData?.deliveryOption === "Home delivery") {
 			setValue("firstname", shippingData.firstname);
@@ -66,9 +64,6 @@ export default function Shipping() {
 		city,
 		phone,
 	}) {
-		console.log(deliveryOption);
-		console.log(firstname, lastname, address, addressExtra, postalCode, city);
-
 		dispatch({
 			type: "SAVE_SHIPPING_DATA",
 			payload: {
@@ -82,6 +77,7 @@ export default function Shipping() {
 				phone,
 			},
 		});
+
 		Cookies.set(
 			"cart",
 			JSON.stringify({
