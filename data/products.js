@@ -35,7 +35,7 @@ const products = [
 		description: "Non-slip yoga mat designed for comfort and support.",
 		category: "Fitness",
 		count: 40,
-		image: "/images/YogaMatPro.jpg",
+		image: "/images/ClassicLeatherWallet.jpg",
 	},
 	{
 		title: "Smart LED Light Bulb",
@@ -44,7 +44,7 @@ const products = [
 		description: "Control lighting with your phone or voice assistant.",
 		category: "Electronics",
 		count: 100,
-		image: "/images/SmartLEDLightBulb.jpg",
+		image: "/images/ClassicLeatherWallet.jpg",
 	},
 	{
 		title: "Bluetooth Shower Speaker",
@@ -53,7 +53,7 @@ const products = [
 		description: "Water-resistant speaker for music and calls in the shower.",
 		category: "Electronics",
 		count: 60,
-		image: "/images/BluetoothShowerSpeaker.jpg",
+		image: "/images/ClassicLeatherWallet.jpg",
 	},
 	{
 		title: "Bamboo Cutting Board",
@@ -62,7 +62,7 @@ const products = [
 		description: "Eco-friendly, knife-friendly bamboo cutting surface.",
 		category: "Home & Kitchen",
 		count: 80,
-		image: "/images/BambooCuttingBoard.jpg",
+		image: "/images/ClassicLeatherWallet.jpg",
 	},
 	{
 		title: "Travel Backpack 35L",
@@ -71,7 +71,7 @@ const products = [
 		description: "Spacious and waterproof backpack for travelers and hikers.",
 		category: "Travel",
 		count: 35,
-		image: "/images/TravelBackpack35L.jpg",
+		image: "/images/ClassicLeatherWallet.jpg",
 	},
 	{
 		title: "Minimalist Analog Watch",
@@ -81,7 +81,7 @@ const products = [
 			"Elegant watch with stainless steel casing and minimalist design.",
 		category: "Accessories",
 		count: 25,
-		image: "/images/MinimalistAnalogWatch.jpg",
+		image: "/images/ClassicLeatherWallet.jpg",
 	},
 	{
 		title: "Ceramic Coffee Mug",

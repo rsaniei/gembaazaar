@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useContext } from "react";
@@ -53,7 +56,11 @@ export default function PlaceOrder() {
 			<h1 className="mb-4 text-xl">Place order</h1>
 			<div className="grid grid-cols-2 md:grid-cols-2 md:gap-10">
 				<div className="p-5 col-span-2 md:col-span-1 border-b border-gray-300">
-					<h2 className="font-semibold mb-10 text-lg">Shipping methods</h2>
+					<div className="mb-10 flex items-center">
+						<h2 className="font-semibold  text-lg">Shipping methods</h2>
+						<FontAwesomeIcon className="text-2xl" icon={faCircleCheck} />
+					</div>
+
 					<div className="flex flex-wrap gap-10">
 						<div className="mr-12">
 							<div className="text-lg">{shippingData.deliveryOption}</div>
@@ -101,7 +108,7 @@ export default function PlaceOrder() {
 							<div>
 								<h2 className="font-semibold text-lg">Summary</h2>
 								<div className="text-xs">
-									{cartItems.length}{" "}
+									{cartItems.reduce((a, item) => item.qty + a, 0)}{" "}
 									{cartItems.length === 1 ? "article" : "articles"}
 								</div>
 							</div>
@@ -112,9 +119,13 @@ export default function PlaceOrder() {
 							</div>
 						</div>
 					</div>
-					<div>
+
+					<div className="flex flex-row gap-5 flex-wrap">
 						{cartItems.map((item) => (
-							<div key={item._id} className="flex flex-wrap flex-col gap-3">
+							<div
+								key={item._id}
+								className="flex  flex-col break-words w-[140px] gap-3"
+							>
 								<div className="">
 									<Image
 										alt={item.title}
@@ -123,14 +134,18 @@ export default function PlaceOrder() {
 										height={170}
 									/>
 								</div>
-								<div>{item.title}</div>
-								<div>{item.count}</div>
+								<div className="text-sm">{item.title}</div>
+								<div className="text-sm">{item.qty}</div>
 							</div>
 						))}
 					</div>
 				</div>
 				<div className="p-5 col-span-2 md:col-span-1">
-					<h2 className="mb-2 text-lg">Payment methods</h2>
+					<div className="mb-10 flex items-center">
+						<h2 className="font-semibold  text-lg">Payment methods</h2>
+						<FontAwesomeIcon className="text-2xl" icon={faCircleCheck} />
+					</div>
+
 					<div>{paymentMethod}</div>
 					<div className="mt-5">
 						<Link
