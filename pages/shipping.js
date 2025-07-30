@@ -1,7 +1,6 @@
 import Cookies from "js-cookie";
 import { useForm } from "react-hook-form";
-
-import { useState, useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 import { CartContext } from "@/context/Cart";
 import Layout from "@/components/Layout";
