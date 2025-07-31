@@ -4,16 +4,24 @@ import bcrypt from "bcryptjs";
 import db from "@/utils/db";
 import User from "@/models/user";
 
-export default NextAuth({
+export const authOptions = {
 	session: {
-		startegy: "jwt",
+		strategy: "jwt",
 	},
 	callbacks: {
 		// will be called on sig-in
 		async jwt({ token, user }) {
-			if (user?._id) token._id = user._id; // Add user data to token on sign-in
-			if (user?.isAdmin) token.isAdmin = user.isAdmin; //Set isAdmin to true for the token
+			console.log("JWT callback called:", { token, user });
 
+			// if (user?._id) token._id = user._id; // Add user data to token on sign-in
+			// if (user?.isAdmin) token.isAdmin = user.isAdmin; //Set isAdmin to true for the token
+
+			// return token;
+			if (user) {
+				// just in the login phase
+				token._id = user._id;
+				token.isAdmin = user.isAdmin;
+			}
 			return token;
 		},
 
@@ -21,7 +29,7 @@ export default NextAuth({
 		//set the session according to the token value
 		//session contains part of the token info which is enought to display the UI
 		async session({ session, token }) {
-			if (token?._id) session.user._id = token._id;
+			if (token._id) session.user._id = token._id;
 			if (token.isAdmin) session.user.isAdmin = token.isAdmin;
 			return session;
 		},
@@ -34,8 +42,10 @@ export default NextAuth({
 				await db.connect();
 				const user = await User.findOne({ email: credentials.email });
 				if (user && bcrypt.compareSync(credentials.password, user.password)) {
+					console.log("IN THE IF IN AUTHORIZE");
+
 					return {
-						_id: user._id,
+						_id: user._id.toString(),
 						name: user.name,
 						email: user.email,
 						image: "a",
@@ -48,4 +58,5 @@ export default NextAuth({
 			},
 		}),
 	],
-});
+};
+export default NextAuth(authOptions);

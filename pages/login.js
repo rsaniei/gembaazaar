@@ -40,6 +40,7 @@ export default function LoginPage() {
 			});
 
 			if (result.error) console.log("Failed");
+			console.log("signIn result:", result);
 		} catch (err) {
 			console.log(err);
 		}

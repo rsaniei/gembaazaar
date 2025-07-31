@@ -16,10 +16,10 @@ export default function PlaceOrder() {
 	const { state, dispatch } = useContext(CartContext);
 
 	const { cart } = state;
-	console.log(cart);
+	// console.log(cart);
 
 	const { shippingData, paymentMethod, cartItems } = cart;
-	console.log(shippingData);
+	// console.log(shippingData);
 
 	useEffect(() => {
 		setHasMounted(true);
@@ -64,6 +64,30 @@ export default function PlaceOrder() {
 		return `${dayName}, ${monthName} ${dayOfMonth}`;
 	}
 
+	async function placeOrderHandler() {
+		const totalPrice = cartItems.reduce(
+			(a, item) => item.price * item.qty + a,
+			0
+		);
+		const response = await fetch("/api/orders", {
+			method: "POST",
+			body: JSON.stringify({
+				orderItems: cartItems,
+				shippingData,
+				paymentMethod,
+				totalPrice,
+			}),
+			headers: {
+				"Content-Type": "application/json",
+				cookie: "req.headers.cookie" || "",
+			},
+			credentials: "include",
+		});
+		const data = await response.json();
+		console.log(data);
+
+		// router.push("/test");
+	}
 	return (
 		<Layout title="Place order">
 			{/* {shippingData && paymentMethod && cartItems && ( */}
@@ -202,7 +226,10 @@ export default function PlaceOrder() {
 						>
 							Return
 						</button>
-						<button className="bg-gray-700 text-white border border-black-500 px-8 py-2 cursor-pointer">
+						<button
+							onClick={placeOrderHandler}
+							className="bg-gray-700 text-white border border-black-500 px-8 py-2 cursor-pointer"
+						>
 							Place order
 						</button>
 					</div>
