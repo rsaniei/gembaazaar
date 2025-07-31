@@ -69,6 +69,9 @@ export default function PlaceOrder() {
 			(a, item) => item.price * item.qty + a,
 			0
 		);
+		console.log("totalprice");
+		console.log(totalPrice);
+
 		const response = await fetch("/api/orders", {
 			method: "POST",
 			body: JSON.stringify({

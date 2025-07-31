@@ -42,8 +42,6 @@ export const authOptions = {
 				await db.connect();
 				const user = await User.findOne({ email: credentials.email });
 				if (user && bcrypt.compareSync(credentials.password, user.password)) {
-					console.log("IN THE IF IN AUTHORIZE");
-
 					return {
 						_id: user._id.toString(),
 						name: user.name,
