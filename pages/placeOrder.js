@@ -10,11 +10,12 @@ import { useContext } from "react";
 import { CartContext } from "@/context/Cart";
 import Layout from "@/components/Layout";
 import CheckoutWizard from "@/components/CheckoutWizard";
+import { useSession } from "next-auth/react";
 
 export default function PlaceOrder() {
 	const router = useRouter();
 	const { state, dispatch } = useContext(CartContext);
-
+	// const { data: session, status } = useSession();
 	const { cart } = state;
 	// console.log(cart);
 
@@ -65,12 +66,15 @@ export default function PlaceOrder() {
 	}
 
 	async function placeOrderHandler() {
+		console.log(cartItems);
+
 		const totalPrice = cartItems.reduce(
 			(a, item) => item.price * item.qty + a,
 			0
 		);
-		console.log("totalprice");
-		console.log(totalPrice);
+		// if (status === "loading") return <p>Loading...</p>;
+		// if (!session) console.log("Not signed in");
+		// console.log(session);
 
 		const response = await fetch("/api/orders", {
 			method: "POST",
