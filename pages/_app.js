@@ -13,7 +13,7 @@ export default function App({
 				<CartContextProvider>
 					{/* if the component needs authentication wrap it with Auth to check if the user is logged in */}
 					{Component.auth ? (
-						<Auth>
+						<Auth adminOnly={Component.auth.adminOnly}>
 							<Component {...pageProps} />
 						</Auth>
 					) : (
@@ -25,17 +25,21 @@ export default function App({
 	);
 }
 
-function Auth({ children }) {
+function Auth({ children, adminOnly }) {
 	const router = useRouter();
-	const { status } = useSession({
+	const { status, data: session } = useSession({
 		required: true,
 		onUnauthenticated() {
 			router.push("/unauthorized");
 		},
 	});
 
+	if (adminOnly && !session.user.isAdmin) {
+		router.push("/unauthorized");
+	}
 	if (status === "loading") {
 		return "Loading";
 	}
+
 	return children;
 }

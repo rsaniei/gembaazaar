@@ -14,6 +14,7 @@ export default function Layout({ children, title }) {
 	const { cart } = state;
 	const [cartItemsCount, setCartItemsCount] = useState(0);
 	const { status, data: session } = useSession();
+	console.log(session);
 
 	useEffect(() => {
 		setCartItemsCount(cart.cartItems.reduce((acc, cur) => acc + cur.qty, 0));
@@ -68,6 +69,17 @@ export default function Layout({ children, title }) {
 												Order history{" "}
 											</DropDown>
 										</MenuItem>
+										{session.user.isAdmin && (
+											<MenuItem>
+												<DropDown
+													className={"flex p-2"}
+													href={"/admin/dashboard"}
+												>
+													{" "}
+													Dashboard{" "}
+												</DropDown>
+											</MenuItem>
+										)}
 										<MenuItem>
 											<a
 												className={"flex p-2"}
