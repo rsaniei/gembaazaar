@@ -20,7 +20,6 @@ export default function DashboardPage() {
 
 	return (
 		<Layout title="Admin Dashboard">
-			<h2>Dashboard page</h2>
 			<div className="grid grid-cols-4 gap-5">
 				<div>
 					<ul>
