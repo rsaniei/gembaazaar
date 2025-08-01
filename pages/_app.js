@@ -34,11 +34,11 @@ function Auth({ children, adminOnly }) {
 		},
 	});
 
-	if (adminOnly && !session.user.isAdmin) {
-		router.push("/unauthorized");
-	}
 	if (status === "loading") {
 		return "Loading";
+	}
+	if (adminOnly && !session?.user.isAdmin) {
+		router.push("/unauthorized");
 	}
 
 	return children;
