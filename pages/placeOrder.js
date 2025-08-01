@@ -84,7 +84,7 @@ export default function PlaceOrder() {
 		const data = await response.json();
 		console.log(data);
 
-		// router.push("/test");
+		router.push("/order-completed");
 	}
 	return (
 		<Layout title="Place order">

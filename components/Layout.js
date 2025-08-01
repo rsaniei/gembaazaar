@@ -63,6 +63,12 @@ export default function Layout({ children, title }) {
 											</DropDown>
 										</MenuItem>
 										<MenuItem>
+											<DropDown className={"flex p-2"} href={"/order-history"}>
+												{" "}
+												Order history{" "}
+											</DropDown>
+										</MenuItem>
+										<MenuItem>
 											<a
 												className={"flex p-2"}
 												href={"#"}
