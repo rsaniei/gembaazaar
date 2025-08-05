@@ -7,6 +7,8 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cookies from "js-cookie";
+import { ShoppingCart, User, LogIn } from "lucide-react";
+
 import DropDown from "./DropDown";
 
 export default function Layout({ children, title }) {
@@ -33,24 +35,26 @@ export default function Layout({ children, title }) {
 			<ToastContainer position="bottom-center" limit={1} autoClose={2000} />
 			<div className="flex min-h-screen flex-col justify-between">
 				<header>
-					<nav className="flex h-14 px-8 justify-between items-center border-b-4 bg-white">
+					<nav className="flex h-14 px-8 justify-between items-center border-b-1 border-gray-700 bg-white">
 						<Link href="/" className="text-lg font-bold">
 							Gem Baazaar
 						</Link>
-						<div>
-							<Link href="/cart" className="p-2">
-								Cart
-								<span className="ml-1 rounded-xl bg-gray-200 px-2 py-1 text-xs font-bold">
-									{/* calculate the sum of qtys */}
-									{cartItemsCount}
-								</span>
+						<div className="flex items-center gap-x-4">
+							<Link href="/cart" className="relative p-2">
+								<ShoppingCart size={24} className="text-gray-700" />
+								{cartItemsCount > 0 && (
+									<span className="absolute bottom-2 right-1 translate-x-1/2 translate-y-1/2 rounded-full bg-gray-500 text-white text-[10px] px-1.5 py-0.5 font-bold leading-none">
+										{cartItemsCount}
+									</span>
+								)}
 							</Link>
 							{status === "loading" ? (
 								"Loading"
 							) : session?.user ? (
 								<Menu as="div" className={"relative inline-block"}>
-									<MenuButton className={"text-blue-500"}>
-										{session.user.name}
+									<MenuButton className="flex items-center gap-1 text-blue-500">
+										<User size={20} />
+										<span>{session.user.name}</span>
 									</MenuButton>
 									<MenuItems
 										className={
@@ -101,8 +105,13 @@ export default function Layout({ children, title }) {
 					</nav>
 				</header>
 				<main className="container m-auto mt-4 px-12">{children}</main>
-				<footer className="flex justify-center items-center h-10">
-					Footer
+				<footer className="flex flex-row gap-5 text-sm justify-center items-center h-10 py-20 border-t border-gray-300">
+					<div>© 2025, Gem Baazaar</div>
+					<div>Refund policy</div>
+					<div>Contact information</div>
+					<div>Terms of service</div>
+					<div>Privacy policy</div>
+					<div>Cookie preferences</div>
 				</footer>
 			</div>
 		</>
