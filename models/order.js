@@ -10,13 +10,46 @@ const orderSchema = new mongoose.Schema({
 	],
 	shippingData: {
 		deliveryOption: { type: String, required: true },
-		firstname: { type: String, required: true },
-		lastname: { type: String, required: true },
-		address: { type: String, required: true },
-		addressExtra: { type: String, required: false },
-		city: { type: String, required: true },
-		postalCode: { type: String, required: true },
-		phone: { type: String, required: false },
+		firstname: {
+			type: String,
+			required: function () {
+				return this.shippingData.deliveryOption === "Home delivery";
+			},
+		},
+		lastname: {
+			type: String,
+			required: function () {
+				return this.shippingData.deliveryOption === "Home delivery";
+			},
+		},
+		address: {
+			type: String,
+			required: function () {
+				return this.shippingData.deliveryOption === "Home delivery";
+			},
+		},
+		addressExtra: {
+			type: String,
+			required: function () {
+				return this.shippingData.deliveryOption === "Home delivery";
+			},
+		},
+		city: {
+			type: String,
+			required: function () {
+				return this.shippingData.deliveryOption === "Home delivery";
+			},
+		},
+		postalCode: {
+			type: String,
+			required: function () {
+				return this.shippingData.deliveryOption === "Home delivery";
+			},
+		},
+		phone: {
+			type: String,
+			required: false,
+		},
 	},
 	paymentMethod: { type: String, required: true },
 	totalPrice: { type: Number, required: true },
