@@ -18,12 +18,12 @@ export default function ProductItem({ item, addtoCard }) {
 				</Link>
 				<p className="p-2">€{item.price} EUR</p>
 
-				<button
-					className="bg-white border border-black text-black absolute bottom-0 right-2 w-fit px-3 py-1 mt-2 cursor-pointer"
+				{/* <button
+					className="bg-white border-1 border-gray-700 text-black absolute bottom-0 right-2 w-fit px-3 py-1 mt-2 cursor-pointer"
 					onClick={() => addtoCard(item)}
 				>
 					+
-				</button>
+				</button> */}
 			</div>
 		</div>
 	);

@@ -191,12 +191,13 @@ export default function PlaceOrder() {
 									<div className="">
 										<Image
 											alt={item.title}
-											src={item.image}
+											src={item.image[0]}
 											width={120}
 											height={170}
 										/>
 									</div>
 									<div className="text-sm">{item.title}</div>
+									<div className="text-sm">€{item.price}</div>
 									<div className="text-sm">{item.qty}</div>
 								</div>
 							))}
@@ -220,7 +221,7 @@ export default function PlaceOrder() {
 						<button
 							type="button"
 							onClick={() => router.push("/payment")}
-							className="bg-gray-100 border border-black-500 px-8 py-2 cursor-pointer"
+							className=" border border-black-500 px-8 py-2 cursor-pointer"
 						>
 							Return
 						</button>

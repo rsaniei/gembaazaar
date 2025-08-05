@@ -34,7 +34,7 @@ function CartPage() {
 						{cartItems.reduce((acc, cur) => acc + cur.price * cur.qty, 0)}
 					</div>
 					<button
-						className="rounded-xl bg-gray-700 text-white py-2 px-4"
+						className=" border border-black text-black text-sm  w-full px-3 py-3 mt-5 cursor-pointer"
 						onClick={checkoutHandler}
 					>
 						Checkout
@@ -45,5 +45,5 @@ function CartPage() {
 	);
 }
 
-//dynamic helps us to render a component in the client side -and not server side-
+//dynamic helps us to render a component in the client side -and not server side
 export default dynamic(() => Promise.resolve(CartPage), { ssr: false });

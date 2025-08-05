@@ -198,7 +198,7 @@ export default function Shipping() {
 						</div>
 					</div>
 				)}
-				<button className="bg-gray-100 border border-black-500 px-8 py-2 cursor-pointer">
+				<button className="bg-gray-700 text-white border border-black-500 px-8 py-2 cursor-pointer">
 					Next
 				</button>
 			</form>
