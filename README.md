@@ -24,9 +24,6 @@
 - 💍 View vintage jewelry products with detail pages
 - 🛒 Add and remove products from cart
 - 📦 Checkout process with cart summary
-- 👤 User profile and order history
-- 🛠 Admin dashboard (optional)
-
 ---
 
 ## 🚀 How to Run Locally
