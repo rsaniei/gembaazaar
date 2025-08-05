@@ -24,6 +24,7 @@
 - 💍 View vintage jewelry products with detail pages
 - 🛒 Add and remove products from cart
 - 📦 Checkout process with cart summary
+
 ---
 
 ## 🚀 How to Run Locally
