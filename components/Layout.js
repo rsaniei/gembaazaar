@@ -35,7 +35,7 @@ export default function Layout({ children, title }) {
 				<header>
 					<nav className="flex h-14 px-8 justify-between items-center border-b-4 bg-white">
 						<Link href="/" className="text-lg font-bold">
-							Shopping Logo
+							Gem Baazaar
 						</Link>
 						<div>
 							<Link href="/cart" className="p-2">

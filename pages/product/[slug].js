@@ -28,39 +28,33 @@ export default function ProductPage({ product }) {
 
 	return (
 		<Layout title={product.title}>
-			<div className="grid  md:grid-cols-4 md:gap-3 rounded-xl bg-white p-10">
-				{/* **col-span-2**: Used to control how many columns an element should span in a CSS grid layout. */}
-				{/*  here span 2 columns  the image on medium screens and up : className="md:col-span-2"*/}
-				<div className="md:col-span-2">
-					<Image
-						className="rounded-xl"
-						src={product.image}
-						alt={product.title}
-						width={340}
-						height={340}
-						// The image will scale automatically with the width of its container, maintaining its original aspect ratio.
-						layout="responsive"
-					></Image>
+			<div className="grid  md:grid-cols-3 md:gap-3 bg-white p-10">
+				<div className="md:col-span-2 flex flex-row gap-2 flex-wrap">
+					{product.image.map((item) => (
+						<Image
+							key={item}
+							src={item}
+							alt={product.title}
+							width={300}
+							height={300}
+							layout="intrinsic"
+						></Image>
+					))}
 				</div>
+
 				<div>
 					<div className="flex flex-col ">
-						<h2 className="mb-2 text-lg font-bold">{product.title}</h2>
-						<p className="mb-5 text-sm">{product.category}</p>
-						<p className="text-base">{product.description}</p>
-					</div>
-				</div>
-				<div className="p-5">
-					<div className="flex mb-2 justify-between">
-						<div>Price: </div>
-						<div>{product.price}</div>
-					</div>
-					<div className="flex mb-2 justify-between">
-						<div>Availability:</div>
-						<div>{product.count > 0 ? "Available" : "Unavailable"}</div>
+						<h2 className="mb-2 text-3xl font-bold">{product.title}</h2>
+						<p className="mb-5 text-xs">{product.category}</p>
+						<div className="mb-2">€{product.price} EUR</div>
+						<div className="mb-5">
+							{product.count > 0 ? "Available" : "Unavailable"}
+						</div>
+						<p className="text-s">{product.description}</p>
 					</div>
 					<button
 						onClick={addToCartHandler}
-						className="rounded-xl bg-blue-700 text-white px-5 py-2 w-full"
+						className=" bg-white border border-black text-black text-sm  w-full px-3 py-3 mt-5 cursor-pointer"
 					>
 						{" "}
 						Add To Cart

@@ -2,20 +2,27 @@ import Link from "next/link";
 import Image from "next/image";
 export default function ProductItem({ item, addtoCard }) {
 	return (
-		<div className=" bg-white rounded-xl mb-5 block py-5">
+		<div className=" block py-5">
 			<Link href={`/product/${item.slug}`}>
-				{/* <Image alt={item.title} src={item.image} className="rounded-t-xl" /> */}
+				<Image
+					alt={item.title}
+					src={item.image[0]}
+					width={220}
+					height={430}
+					className="mb-5 w-full"
+				/>
 			</Link>
-			<div className="flex flex-col items-center justify-center">
+			<div className="relative flex flex-col justify-right justify-center">
 				<Link href={`/product/${item.slug}`}>
-					<h2 className="text-lg">{item.title}</h2>
+					<h2 className="text-sm">{item.title}</h2>
 				</Link>
-				<p className="p-2">{item.price}</p>
+				<p className="p-2">€{item.price} EUR</p>
+
 				<button
-					className="rounded-xl bg-gray-700 text-white px-4 py-2"
+					className="bg-white border border-black text-black absolute bottom-0 right-2 w-fit px-3 py-1 mt-2 cursor-pointer"
 					onClick={() => addtoCard(item)}
 				>
-					Add to Cart
+					+
 				</button>
 			</div>
 		</div>
