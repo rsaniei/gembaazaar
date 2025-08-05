@@ -5,6 +5,7 @@ import ProductItem from "@/components/ProductItem";
 import db from "../utils/db";
 import Product from "@/models/product";
 import { CartContext } from "../context/Cart";
+import Image from "next/image";
 
 export default function Home({ products }) {
 	const { state, dispatch } = useContext(CartContext);
@@ -25,7 +26,25 @@ export default function Home({ products }) {
 	return (
 		<Layout title="HomePage">
 			{/* set different grid counts for different medium size */}
-			<div className="grid grid-cols-1 gap-6 md:grid-col-3 lg:grid-cols-4">
+			<div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[550px]">
+				<Image
+					src="/images/1.webp"
+					alt="Hero Image"
+					fill
+					className="object-cover opacity-80"
+					priority
+				/>
+
+				<div className="absolute inset-0 bg-black/30" />
+
+				<div className="absolute inset-0 flex items-center justify-center">
+					<h1 className="text-white text-3xl md:text-5xl font-bold text-center drop-shadow-lg mt-40">
+						Discover Timeless Vintage Elegance
+					</h1>
+				</div>
+			</div>
+			<h2 className="p-5 mt-10 text-3xl">Featured products</h2>
+			<div className="grid grid-cols-1 gap-2 md:grid-col-3 lg:grid-cols-4">
 				{products.map((p) => (
 					<ProductItem
 						key={p.title}
