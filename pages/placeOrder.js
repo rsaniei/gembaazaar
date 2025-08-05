@@ -204,7 +204,7 @@ export default function PlaceOrder() {
 						</div>
 					</div>
 				</div>
-				<div className="fixed bottom-0 left-0 w-full py-10 bg-white border-t-40 border-blue-800 flex flex-col items-center justify-center">
+				<div className="fixed bottom-0 left-0 w-full py-10 bg-white border-t-10 border-gray-700 flex flex-col items-center justify-center">
 					<h2 className="text-3xl flex gap-10 ">
 						<span>
 							Total{" "}

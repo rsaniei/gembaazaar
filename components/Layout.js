@@ -52,13 +52,13 @@ export default function Layout({ children, title }) {
 								"Loading"
 							) : session?.user ? (
 								<Menu as="div" className={"relative inline-block"}>
-									<MenuButton className="flex items-center gap-1 text-blue-500">
+									<MenuButton className="flex items-center gap-1 cursor-pointer">
 										<User size={20} />
 										<span>{session.user.name}</span>
 									</MenuButton>
 									<MenuItems
 										className={
-											"absolute right-0 w-56 bg-white p-4 origin-top-right border-slate-500"
+											"absolute right-0 w-56 bg-white p-4 origin-top-right border border-gray-300 shadow-lg rounded-md z-50"
 										}
 									>
 										<MenuItem>
@@ -97,8 +97,8 @@ export default function Layout({ children, title }) {
 									</MenuItems>
 								</Menu>
 							) : (
-								<Link href="/login" className="p-2">
-									Login
+								<Link href="/login" className="flex items-center gap-1 p-2">
+									<LogIn size={20} />
 								</Link>
 							)}
 						</div>

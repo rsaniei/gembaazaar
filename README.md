@@ -74,4 +74,4 @@
 
 ## 📄 License
 
-This project is for educational and demonstration purposes. Feel free to extend it with features like payments, filters, search, or wishlists.
+This project is for educational and demonstration purposes. This is a work in progress.Feel free to pull the last version fro mtime to time to get the latest version.
