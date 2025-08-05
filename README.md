@@ -34,7 +34,7 @@
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/gem-baazaar.git
+   git clone https://github.com/rsaniei/gembaazaar.git
    cd gem-baazaar
    ```
 
