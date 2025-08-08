@@ -9,17 +9,12 @@ export default function LoginPage() {
 	const { data: session } = useSession();
 
 	const router = useRouter();
-	console.log(router);
 
 	const { redirect } = router.query;
 
 	useEffect(() => {
 		//if user is logged in
 		if (session?.user) {
-			console.log("redirect");
-
-			console.log(redirect);
-
 			router.push(redirect || "/");
 		}
 	}, [router, session, redirect]);
@@ -40,7 +35,6 @@ export default function LoginPage() {
 			});
 
 			if (result.error) console.log("Failed");
-			console.log("signIn result:", result);
 		} catch (err) {
 			console.log(err);
 		}

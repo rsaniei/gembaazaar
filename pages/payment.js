@@ -12,7 +12,6 @@ export default function PaymentPage() {
 	const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(
 		paymentMethod || ""
 	);
-	console.log(selectedPaymentMethod);
 
 	const router = useRouter();
 

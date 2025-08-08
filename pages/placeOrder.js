@@ -82,7 +82,6 @@ export default function PlaceOrder() {
 			credentials: "include",
 		});
 		const data = await response.json();
-		console.log(data);
 
 		router.push("/order-completed");
 	}
