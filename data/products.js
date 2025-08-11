@@ -16,7 +16,7 @@ const products = [
 		description:
 			"These vintage 1980s Valentino clip-on earrings feature a sophisticated design crafted from 10K gold-filled metal. Measuring 2 inches in length and weighing a combined 52 grams, they exemplify the brand’s commitment to luxury and style. The substantial weight underscores their quality, making them a standout addition to any jewelry collection. While unsigned, their design and craftsmanship are indicative of Valentino’s 1980s aesthetic.",
 		category: "Earrings",
-		count: 20,
+		count: 0,
 		image: ["/images/e20.webp", "/images/e21.webp", "/images/e22.webp"],
 	},
 	{
@@ -41,7 +41,7 @@ const products = [
 		description:
 			"Statement-making and sophisticated, these gold-plated clip-on earrings from Chr. Dior feature a striking double-shell drop design with fine ridged texture that catches the light beautifully. Signed on the clip backs, they measure 2.5 inches long and weigh 34g combined. A timeless piece for any collector or lover of bold, high-fashion accessories.",
 		category: "Earrings",
-		count: 40,
+		count: 5,
 		image: [
 			"/images/e40.webp",
 			"/images/e41.webp",
