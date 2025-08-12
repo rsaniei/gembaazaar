@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
 import { useContext, useState, useEffect } from "react";
 import { CartContext } from "../context/Cart";
@@ -23,7 +24,6 @@ export default function Layout({ children, title }) {
 
 	function logoutHandler() {
 		Cookies.remove();
-		//go to login page after signout
 		signOut({ callbackUrl: "/login" });
 	}
 	return (
@@ -36,8 +36,15 @@ export default function Layout({ children, title }) {
 				<header>
 					<nav className="flex h-14 px-8 justify-between items-center border-b-1 border-gray-700 bg-white">
 						<Link href="/" className="text-lg font-bold">
-							Gem Baazaar
+							<div
+								className="flex items-center
+"
+							>
+								<Image src="/logo2.png" width={50} height={50} alt="logo" />
+								<div>Gem Baazaar</div>
+							</div>
 						</Link>
+
 						<div className="flex items-center gap-x-4">
 							<Link href="/cart" className="relative p-2">
 								<ShoppingCart size={24} className="text-gray-700" />
