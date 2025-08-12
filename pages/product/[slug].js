@@ -37,8 +37,8 @@ export default function ProductPage({ product }) {
 
 	return (
 		<Layout title={product.title}>
-			<div className="grid  md:grid-cols-3 md:gap-3 bg-white p-10">
-				<div className="md:col-span-2 flex flex-row gap-2 flex-wrap">
+			<div className="grid  md:grid-cols-3 md:gap-3 bg-white p-10 ">
+				<div className="md:col-span-2 flex flex-row gap-2 flex-wrap items-center justify-center ">
 					{product.image.map((item) => (
 						<Image
 							key={item}

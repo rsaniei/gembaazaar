@@ -38,10 +38,10 @@ export default function Layout({ children, title }) {
 					<Disclosure as="nav" className="bg-white border-b border-gray-200">
 						{({ open }) => (
 							<>
-								<div className="flex justify-between items-center h-14 px-4 sm:px-8">
+								<div className="flex justify-between items-center h-20 px-4 sm:px-8">
 									{/* Left: Mobile Menu Button */}
 									<div className="flex items-center gap-2">
-										<Disclosure.Button className="lg:hidden p-2 rounded hover:bg-gray-100">
+										<Disclosure.Button className="md:hidden p-2 rounded hover:bg-gray-100">
 											{open ? (
 												<svg
 													className="h-6 w-6"
@@ -89,7 +89,7 @@ export default function Layout({ children, title }) {
 									</div>
 
 									{/* Desktop Links */}
-									<div className="hidden lg:flex gap-10">
+									<div className="hidden md:flex gap-10">
 										<Link href="/jewelry">Jewelry</Link>
 										<Link href="/belts">Belts</Link>
 										<Link href="/handbags">Handbags</Link>
@@ -171,7 +171,7 @@ export default function Layout({ children, title }) {
 								</div>
 
 								{/* Mobile dropdown */}
-								<Disclosure.Panel className="lg:hidden flex flex-col gap-4 px-4 py-2 border-t">
+								<Disclosure.Panel className="md:hidden flex flex-col gap-4 px-4 py-2 border-t">
 									<Link href="/jewelry">Jewelry</Link>
 									<Link href="/belts">Belts</Link>
 									<Link href="/handbags">Handbags</Link>
@@ -182,7 +182,7 @@ export default function Layout({ children, title }) {
 						)}
 					</Disclosure>
 				</header>
-				<main className="container m-auto mt-4 px-12">{children}</main>
+				<main className="container m-auto px-12">{children}</main>
 				<footer className="flex flex-row gap-5 text-sm justify-center items-center h-10 py-20 border-t border-gray-300">
 					<div>© 2025, Gem Baazaar</div>
 					<div>Refund policy</div>
