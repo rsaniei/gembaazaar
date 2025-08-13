@@ -9,7 +9,11 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cookies from "js-cookie";
 import { ShoppingCart, User, LogIn } from "lucide-react";
-import { Disclosure } from "@headlessui/react";
+import {
+	Disclosure,
+	DisclosureButton,
+	DisclosurePanel,
+} from "@headlessui/react";
 
 import DropDown from "./DropDown";
 
@@ -90,7 +94,36 @@ export default function Layout({ children, title }) {
 
 									{/* Desktop Links */}
 									<div className="hidden md:flex gap-10">
-										<Link href="/jewelry">Jewelry</Link>
+										<Menu as="div" className="relative text-life inline-block">
+											<MenuButton>Jewelry</MenuButton>
+											<MenuItems className="absolute left-0 mt-2 py-2 bg-white border border-gray-200 w-50 ">
+												<MenuItem className="data-focus:underline data-focus:decoration-1 data-focus: decoration-gray-500">
+													<DropDown className="flex px-4 py-3" href="">
+														All
+													</DropDown>
+												</MenuItem>
+												<MenuItem className="data-focus:underline data-focus:decoration-1 data-focus: decoration-gray-500">
+													<DropDown className="flex px-4 py-2" href="">
+														Earrings
+													</DropDown>
+												</MenuItem>
+												<MenuItem className="data-focus:underline data-focus:decoration-1 data-focus: decoration-gray-500">
+													<DropDown className="flex px-4 py-2" href="">
+														Necklaces
+													</DropDown>
+												</MenuItem>
+												<MenuItem className="data-focus:underline data-focus:decoration-1 data-focus: decoration-gray-500">
+													<DropDown className="flex px-4 py-2" href="">
+														Bracelets
+													</DropDown>
+												</MenuItem>
+												<MenuItem className="data-focus:underline data-focus:decoration-1 data-focus: decoration-gray-500">
+													<DropDown className="flex px-4 py-2" href="">
+														Rings
+													</DropDown>
+												</MenuItem>
+											</MenuItems>
+										</Menu>
 										<Link href="/belts">Belts</Link>
 										<Link href="/handbags">Handbags</Link>
 										<Link href="/sale">Sale</Link>
@@ -171,13 +204,42 @@ export default function Layout({ children, title }) {
 								</div>
 
 								{/* Mobile dropdown */}
-								<Disclosure.Panel className="md:hidden flex flex-col gap-4 px-4 py-2 border-t">
-									<Link href="/jewelry">Jewelry</Link>
+								<DisclosurePanel className="md:hidden flex flex-col items-center gap-4 px-4 py-2 border-t">
+									<Disclosure>
+										{({ open }) => (
+											<>
+												<DisclosureButton>
+													<span>Jewelry</span>
+												</DisclosureButton>
+												<DisclosurePanel className="pl-6 flex flex-col gap-2">
+													<Link
+														href="/jewelry/rings"
+														className="hover:underline"
+													>
+														Rings
+													</Link>
+													<Link
+														href="/jewelry/necklaces"
+														className="hover:underline"
+													>
+														Necklaces
+													</Link>
+													<Link
+														href="/jewelry/bracelets"
+														className="hover:underline"
+													>
+														Bracelets
+													</Link>
+												</DisclosurePanel>
+											</>
+										)}
+									</Disclosure>
+									{/* <Link>Jewelry</Link> */}
 									<Link href="/belts">Belts</Link>
 									<Link href="/handbags">Handbags</Link>
 									<Link href="/sale">Sale</Link>
 									<Link href="/contact">Contact</Link>
-								</Disclosure.Panel>
+								</DisclosurePanel>
 							</>
 						)}
 					</Disclosure>
