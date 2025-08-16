@@ -17,7 +17,6 @@ export default function PlaceOrder() {
 	const { state, dispatch } = useContext(CartContext);
 	const { cart } = state;
 	const { shippingData, paymentMethod, cartItems } = cart;
-	// console.log(cartItems);
 
 	useEffect(() => {
 		setHasMounted(true);
