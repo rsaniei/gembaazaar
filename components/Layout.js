@@ -96,7 +96,7 @@ export default function Layout({ children, title }) {
 									<div className="hidden md:flex gap-10">
 										<Menu as="div" className="relative text-life inline-block">
 											<MenuButton>Jewelry</MenuButton>
-											<MenuItems className="absolute left-0 mt-2 py-2 bg-white border border-gray-200 w-50 ">
+											<MenuItems className="absolute left-0 mt-2 py-2 bg-white shadow-lg z-50 border border-gray-200 ">
 												<MenuItem className="data-focus:underline data-focus:decoration-1 data-focus: decoration-gray-500">
 													<DropDown className="flex px-4 py-3" href="">
 														All
