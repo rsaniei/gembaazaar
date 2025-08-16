@@ -17,6 +17,7 @@ export default function PlaceOrder() {
 	const { state, dispatch } = useContext(CartContext);
 	const { cart } = state;
 	const { shippingData, paymentMethod, cartItems } = cart;
+	// console.log(cartItems);
 
 	useEffect(() => {
 		setHasMounted(true);
@@ -62,6 +63,9 @@ export default function PlaceOrder() {
 	}
 
 	async function placeOrderHandler() {
+		console.log("in the place order");
+		console.log(cartItems);
+
 		const totalPrice = cartItems.reduce(
 			(a, item) => item.price * item.qty + a,
 			0
