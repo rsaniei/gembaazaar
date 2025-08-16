@@ -44,7 +44,7 @@ export default function Home({ products }) {
 				</div>
 			</div>
 			<h2 className="p-5 mt-10 text-3xl">Featured products</h2>
-			<div className="grid grid-cols-1 gap-2 md:grid-col-3 lg:grid-cols-4">
+			<div className="grid grid-cols-1 gap-2 md:grid-cols-3 lg:grid-cols-4">
 				{products.map((p) => (
 					<ProductItem
 						key={p.title}

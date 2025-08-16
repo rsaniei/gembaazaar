@@ -22,7 +22,7 @@ export default function OrderHistoryPage() {
 				{orders?.map((order) => (
 					<div
 						key={order._id}
-						className="flex-col gap-3 border-b-1 border-gray-300 last:border-b-0"
+						className="grid grid-cols-2 gap-3 border-b-1 border-gray-300 last:border-b-0"
 					>
 						{order.orderItems.map((item) => (
 							<div key={item._id} className="flex gap-2 mb-2">
@@ -41,8 +41,9 @@ export default function OrderHistoryPage() {
 								</div>
 							</div>
 						))}
-						<div className="flex">
-							<div className="ml-auto">Total price: €{order.totalPrice}</div>
+
+						<div className="mt-auto text-right col-span-2 font-bold">
+							Total price: €{order.totalPrice}
 						</div>
 					</div>
 				))}
