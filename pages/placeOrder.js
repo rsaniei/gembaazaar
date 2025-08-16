@@ -86,6 +86,11 @@ export default function PlaceOrder() {
 		});
 		const data = await response.json();
 
+		//remove the item from the cart
+		for (let item of cartItems) {
+			dispatch({ type: "REMOVE_ITEM", payload: item });
+		}
+
 		router.push("/order-completed");
 	}
 	return (
