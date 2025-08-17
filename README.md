@@ -24,6 +24,10 @@
 - 💍 View vintage jewelry products with detail pages
 - 🛒 Add and remove products from cart
 - 📦 Checkout process with cart summary
+- 🔍 Filter the products based on the category ✅
+
+Ask ChatGPT
+
 
 ---
 
@@ -72,4 +76,4 @@
 
 ## 📄 License
 
-This project is for educational and demonstration purposes. This is a work in progress.Feel free to pull the last version fro mtime to time to get the latest version.
+This project is for educational and demonstration purposes. This is a work in progress.   Feel free to pull the last version from time to time.
