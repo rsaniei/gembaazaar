@@ -10,6 +10,8 @@ export default function ProductItem({ item, addtoCard }) {
 					width={220}
 					height={430}
 					className="mb-5 w-full"
+					// placeholder="blur"
+					// blurDataURL="data:image/png;base64,..."
 				/>
 			</Link>
 			<div className="relative flex flex-col justify-right justify-center">

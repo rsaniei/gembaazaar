@@ -103,22 +103,34 @@ export default function Layout({ children, title }) {
 													</DropDown>
 												</MenuItem>
 												<MenuItem className="data-focus:underline data-focus:decoration-1 data-focus: decoration-gray-500">
-													<DropDown className="flex px-4 py-2" href="">
+													<DropDown
+														className="flex px-4 py-2"
+														href="/?category=earrings"
+													>
 														Earrings
 													</DropDown>
 												</MenuItem>
 												<MenuItem className="data-focus:underline data-focus:decoration-1 data-focus: decoration-gray-500">
-													<DropDown className="flex px-4 py-2" href="">
+													<DropDown
+														className="flex px-4 py-2"
+														href="/?category=necklace"
+													>
 														Necklaces
 													</DropDown>
 												</MenuItem>
 												<MenuItem className="data-focus:underline data-focus:decoration-1 data-focus: decoration-gray-500">
-													<DropDown className="flex px-4 py-2" href="">
+													<DropDown
+														className="flex px-4 py-2"
+														href="/?category=bracelet"
+													>
 														Bracelets
 													</DropDown>
 												</MenuItem>
 												<MenuItem className="data-focus:underline data-focus:decoration-1 data-focus: decoration-gray-500">
-													<DropDown className="flex px-4 py-2" href="">
+													<DropDown
+														className="flex px-4 py-2"
+														href="/?category=ring"
+													>
 														Rings
 													</DropDown>
 												</MenuItem>
@@ -151,7 +163,7 @@ export default function Layout({ children, title }) {
 													</MenuButton>
 													<MenuItems
 														className={
-															"absolute right-0 w-56 bg-white p-4 origin-top-right border border-gray-300 shadow-lg rounded-md z-50"
+															"absolute right-0 w-56 bg-white p-4 origin-top-right border border-gray-300 shadow-lg z-50"
 														}
 													>
 														<MenuItem>

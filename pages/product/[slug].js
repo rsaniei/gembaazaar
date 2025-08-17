@@ -47,6 +47,8 @@ export default function ProductPage({ product }) {
 							width={300}
 							height={300}
 							layout="intrinsic"
+							// placeholder="blur"
+							// blurDataURL="data:image/png;base64,..."
 						></Image>
 					))}
 				</div>
