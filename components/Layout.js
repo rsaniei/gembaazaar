@@ -225,19 +225,25 @@ export default function Layout({ children, title }) {
 												</DisclosureButton>
 												<DisclosurePanel className="pl-6 flex flex-col gap-2">
 													<Link
-														href="/jewelry/rings"
+														href="/?category=earrings"
+														className="hover:underline"
+													>
+														Earrings
+													</Link>
+													<Link
+														href="/?category=rings"
 														className="hover:underline"
 													>
 														Rings
 													</Link>
 													<Link
-														href="/jewelry/necklaces"
+														href="/?category=necklaces"
 														className="hover:underline"
 													>
 														Necklaces
 													</Link>
 													<Link
-														href="/jewelry/bracelets"
+														href="/?category=bracelets"
 														className="hover:underline"
 													>
 														Bracelets
