@@ -40,7 +40,7 @@ export default function Layout({ children, title }) {
 			<div className="flex min-h-screen flex-col justify-between">
 				<header>
 					<Disclosure as="nav" className="bg-white border-b border-gray-200">
-						{({ open }) => (
+						{({ open, close }) => (
 							<>
 								<div className="flex justify-between items-center h-20 px-4 sm:px-8">
 									{/* Left: Mobile Menu Button */}
@@ -216,29 +216,35 @@ export default function Layout({ children, title }) {
 								</div>
 
 								{/* Mobile dropdown */}
-								<DisclosurePanel className="md:hidden flex flex-col items-center gap-4 px-4 py-2 border-t">
-									<Disclosure>
+								<DisclosurePanel
+									as="div"
+									className="md:hidden flex flex-col items-center gap-4 px-4 py-2 border-t absolute right-0 left-0 bg-white shadow-lg z-50"
+								>
+									<Disclosure as="div">
 										{({ open }) => (
 											<>
 												<DisclosureButton>
 													<span>Jewelry</span>
 												</DisclosureButton>
-												<DisclosurePanel className="pl-6 flex flex-col gap-2">
+												<DisclosurePanel className="pl-6 flex flex-col gap-2 ">
 													<Link
 														href="/?category=earrings"
 														className="hover:underline"
+														onClick={() => close()}
 													>
 														Earrings
 													</Link>
 													<Link
 														href="/?category=necklace"
 														className="hover:underline"
+														onClick={() => close()}
 													>
 														Necklaces
 													</Link>
 													<Link
 														href="/?category=bracelet"
 														className="hover:underline"
+														onClick={() => close()}
 													>
 														Bracelets
 													</Link>
@@ -246,11 +252,18 @@ export default function Layout({ children, title }) {
 											</>
 										)}
 									</Disclosure>
-									{/* <Link>Jewelry</Link> */}
-									<Link href="/belts">Belts</Link>
-									<Link href="/handbags">Handbags</Link>
-									<Link href="/sale">Sale</Link>
-									<Link href="/contact">Contact</Link>
+									<Link href="/?category=belts" onClick={() => close()}>
+										Belts
+									</Link>
+									<Link href="/?category=handbags" onClick={() => close()}>
+										Handbags
+									</Link>
+									<Link href="/?category=sale" onClick={() => close()}>
+										Sale
+									</Link>
+									<Link href="/contact" onClick={() => close()}>
+										Contact
+									</Link>
 								</DisclosurePanel>
 							</>
 						)}

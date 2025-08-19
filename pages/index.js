@@ -8,8 +8,6 @@ import { CartContext } from "../context/Cart";
 import Image from "next/image";
 
 export default function Home({ products }) {
-	console.log(products);
-
 	const { state, dispatch } = useContext(CartContext);
 
 	function addToCartHandler(product) {
@@ -28,7 +26,7 @@ export default function Home({ products }) {
 	return (
 		<Layout title="HomePage">
 			{/* set different grid counts for different medium size */}
-			<div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[550px]">
+			<div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]  h-[300px] md:h-[400px] lg:h-[550px]">
 				<Image
 					src="/images/1.webp"
 					alt="Hero Image"
