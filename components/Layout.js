@@ -231,19 +231,13 @@ export default function Layout({ children, title }) {
 														Earrings
 													</Link>
 													<Link
-														href="/?category=rings"
-														className="hover:underline"
-													>
-														Rings
-													</Link>
-													<Link
-														href="/?category=necklaces"
+														href="/?category=necklace"
 														className="hover:underline"
 													>
 														Necklaces
 													</Link>
 													<Link
-														href="/?category=bracelets"
+														href="/?category=bracelet"
 														className="hover:underline"
 													>
 														Bracelets
